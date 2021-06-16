@@ -5,6 +5,9 @@
  */
 package herencias2;
 
+import java.util.Locale;
+import java.util.Scanner;
+
 /**
  *
  * @author reroes
@@ -15,19 +18,41 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Estudiante e = new Estudiante("René", "Elizalde", 33, 100.2);
-        System.out.println(e);
-        // Un docente hereda de una Persona y adicionalmente tiene 
-        // la característia sueldo
-        Docente d = new Docente("Luis", "Alvarez", 40, 1000); // falta implementar
-        System.out.println(d);
-        
-        // Un policia hereda de una Persona y adicionalmente tiene 
-        // la característia rango
-        Policia p = new Policia("ALEX", "MENDOZA", 35, "Cabo"); // falta implementar
-        System.out.println(p);
-        
+        Scanner sc = new Scanner(System.in);
+        sc.useLocale(Locale.US);
+
+        System.out.println("Elija una opcion\n"
+                + "1.Ingrese Estudiante\n"
+                + "2.Ingrese Docente\n"
+                + "3.ingrese Policia\n");
+        int opcion = sc.nextInt();
+        sc.nextLine();
+        System.out.printf("ingrese su Nombre: \n");
+        String nom = sc.nextLine();
+        System.out.printf("Ingrese su Apellido:\n ");
+        String ape = sc.nextLine();
+        System.out.printf("Ingrese su edad:\n ");
+        int edad = sc.nextInt();
+
+        if (opcion == 1) {
+            System.out.printf("Ingrese valor Matricula\n");
+            double ma = sc.nextDouble();
+            Estudiante e = new Estudiante(nom, ape, edad, ma);
+            System.out.println(e);
+        }
+        if (opcion == 2) {
+            System.out.printf("Ingrese el Sueldo\n");
+            double sue = sc.nextDouble();
+            Docente d = new Docente(nom, ape, edad, sue);
+            System.out.println(d);
+        }
+        if (opcion == 3) {
+            System.out.printf("Ingrese el Rango\n");
+            String ra = sc.nextLine();
+            Policia po = new Policia(nom, ape, edad, ra);
+            System.out.println(po);
+        }
+
     }
-    
+
 }
